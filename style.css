@@ -1,0 +1,44 @@
+*{
+    font-family: 'Roboto', 'sans-serif';
+    margin: 0;
+}
+
+body, html{
+    height: 100%;
+    background-color: #f6f6f3;
+}
+
+.header{
+    display: flex;
+    font-size: 2em;
+    font-weight: 500;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+}
+
+.menu{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.container{
+    display: flex;
+    min-height: 660px;
+}
+
+button{
+    padding: 8px;
+    max-height: 40px;
+    min-width: 110px;
+}
+
+.footer{
+    display: flex;
+    background-color: #eeeeee;
+    padding: 20px;
+    font-size: 15px;
+    justify-content: center;
+}
