@@ -10,14 +10,36 @@
     </head>
     <body>
         <div class="header"> My Library</div>
-        <div class="menu">
-            <button id="add">Add Book</button>
-            <button id="remove">Remove Book</button>
-        </div>
-        <div class="container"></div>
-        <footer class="footer">Made by github.com/1uum/ for The Odin Project</footer>
 
-        <script src="style.css"></script>
+        <div class="form-menu">
+            <form>
+                <label for="bookName">Title:</label>
+                <input type="text" name="bookName" id="input-title">
+                <label for="authorName">Author:</label>
+                <input type="text" name="authorName" id="input-author">
+                <label for="isRead">Have you read it?</label>
+                <input type="checkbox" id="input-check">
+                <button id="add">Add Book</button>
+            </form>
+        </div>
+
+        <div class="my-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Author</th>
+                        <th>Read Status</th>
+                        <th> </th>
+                    </tr>
+                </thead>
+                <tbody id="book-table">
+                    
+                </tbody>
+            </table>
+        </div>
+        <footer>Made by github.com/1uum/ for The Odin Project</footer>
+
         <script src="script.js"></script>
     </body>
     
