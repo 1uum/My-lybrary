@@ -1,35 +1,50 @@
 let myLibrary = [];
-let book = [
-    {title: "some book", author: "some author", readStatus: "no"},
-    {title: "some book2", author: "some author2", readStatus: "yes"}
-];
-/*function Book (title, author, readStatus){
+
+function Book (title, author, readStatus){
     this.title = title;
     this.author = author;
     this.readStatus = readStatus;
-}*/
+}
 
-/*var theHobbit = new Book ('The Hobbit', 'J.R.R. Tolkien', 'not read');*/
-
-let bookTitle = document.getElementById('input-title');
-let bookAuthor = document.getElementById('input-author');
-let bookCheck = document.getElementById('input-check');
+addBookToLibrary ('The Hobbit', 'J.R.R. Tolkien', 'No');
 
 
-function addBookToLibrary() {
-    //do stuff here
+let checkBox = document.getElementById("input-check");
+checkBox.addEventListener('click', function(){});
+
+let addBook = document.getElementById('form').addEventListener('submit', (e) => {
+    let newBookTitle = document.getElementById("input-title").value;
+    let newBookAuthor = document.getElementById("input-author").value;
+    e.preventDefault();
+    if (checkBox.checked){
+        newBookStatus = 'Yes';
+    } else{
+        newBookStatus = 'No';
+    }
+    if(newBookTitle !== '' && newBookAuthor !== ''){
+        addBookToLibrary(newBookTitle, newBookAuthor, newBookStatus);
+    }   else{
+        alert('Please complete all of the fields');
+    }
+    form.reset();
+});
+
+function addBookToLibrary(bookTitle, bookAuthor, bookStatus) {
+    let book = new Book (bookTitle, bookAuthor, bookStatus);
+    myLibrary.push(book);
+    displayBooks();
 }
 
 
-window.onload = displayBooks;
+//window.onload = displayBooks();
 
 function displayBooks() {
     let bookTable = document.getElementById("book-table");
     let bookInfo= "";
     
-    book.forEach((book)=>{
-        bookInfo = "<tr><td>" + book.title + "</td><td>" + book.author + "</td><td>" + book.readStatus + "</td></tr>";
-    });
-
+    console.log(myLibrary);
+    for (let i = 0; i < myLibrary.length; i++){
+        bookInfo += "<tr><td>" + myLibrary[i].title + "</td><td>" + myLibrary[i].author + "</td><td>" + myLibrary[i].readStatus + "</td></tr>";
+    };
     bookTable.innerHTML = bookInfo;
 }
