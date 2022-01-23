@@ -5,9 +5,26 @@ function Book (title, author, readStatus){
     this.author = author;
     this.readStatus = readStatus;
 }
+checkLocalStorage();
 
-addBookToLibrary ('The Hobbit', 'J.R.R. Tolkien', 'No');
+function checkLocalStorage(){
+    if(localStorage.getItem('bookLibrary')!== null){
+        storageLibrary = JSON.parse(localStorage.getItem("bookLibrary"));
+        myLibrary = storageLibrary;
+        window.onload = displayBooks();
+    } else{
+        myLibrary=[];
+        addBookToLibrary ('The Hobbit', 'J.R.R. Tolkien', 'No');
+        addBookToLibrary ('Don Quixote', 'Miguel de Cervantes', 'Yes');
+        addBookToLibrary ('One Hundred Years of Solitude', 'Gabriel Garcia Marquez', 'Yes');
+        updateLocalStorage()
+    }
+}
 
+function updateLocalStorage(){
+    localStorage.setItem("bookLibrary", JSON.stringify(myLibrary));
+    location.reload();
+}
 
 let checkBox = document.getElementById("input-check");
 checkBox.addEventListener('click', function(){});
@@ -21,8 +38,10 @@ let addBook = document.getElementById('form').addEventListener('submit', (e) => 
     } else{
         newBookStatus = 'No';
     }
+    
     if(newBookTitle !== '' && newBookAuthor !== ''){
         addBookToLibrary(newBookTitle, newBookAuthor, newBookStatus);
+        
     }   else{
         alert('Please complete all of the fields');
     }
@@ -32,19 +51,36 @@ let addBook = document.getElementById('form').addEventListener('submit', (e) => 
 function addBookToLibrary(bookTitle, bookAuthor, bookStatus) {
     let book = new Book (bookTitle, bookAuthor, bookStatus);
     myLibrary.push(book);
+    updateLocalStorage();
     displayBooks();
 }
-
-
-//window.onload = displayBooks();
 
 function displayBooks() {
     let bookTable = document.getElementById("book-table");
     let bookInfo= "";
     
-    console.log(myLibrary);
     for (let i = 0; i < myLibrary.length; i++){
-        bookInfo += "<tr><td>" + myLibrary[i].title + "</td><td>" + myLibrary[i].author + "</td><td>" + myLibrary[i].readStatus + "</td></tr>";
+        bookInfo += "<tr><td>" + 
+        myLibrary[i].title + "</td><td>" + 
+        myLibrary[i].author + "</td><td>" + 
+        ((myLibrary[i].readStatus == 'Yes') ? "✅" : "❎" ) + "</td><td>" + 
+        '<button class= "bttnStatus" '+" value="+ i + '>Change Status</button>' + "</td><td>" +
+        '<button class= "bttnDelete" '+" value="+ i + '>🗑️</button>'+ "</td></tr>";
     };
     bookTable.innerHTML = bookInfo;
 }
+
+//Listen for click of delete button, and deletes the book from library.
+document.querySelectorAll(".bttnDelete").forEach(i=>i.addEventListener('click', e => { 
+    myLibrary.splice(e.currentTarget.value,1);
+    updateLocalStorage();
+})); 
+//Listen for click of change status button, and changes the status reading.
+document.querySelectorAll(".bttnStatus").forEach(i=>i.addEventListener('click', e => { 
+    if (myLibrary[e.currentTarget.value].readStatus == 'Yes') {
+        myLibrary[e.currentTarget.value].readStatus = 'No' ; 
+    } else{
+        myLibrary[e.currentTarget.value].readStatus = 'Yes'
+    }
+    updateLocalStorage();
+})); 
