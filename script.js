@@ -1,9 +1,11 @@
 let myLibrary = [];
 
-function Book (title, author, readStatus){
-    this.title = title;
-    this.author = author;
-    this.readStatus = readStatus;
+class Book {
+    constructor (title, author, readStatus){
+        this.title = title;
+        this.author = author;
+        this.readStatus = readStatus;
+    }
 }
 checkLocalStorage();
 
@@ -13,10 +15,11 @@ function checkLocalStorage(){
         myLibrary = storageLibrary;
         window.onload = displayBooks();
     } else{
-        myLibrary=[];
-        addBookToLibrary ('The Hobbit', 'J.R.R. Tolkien', 'No');
-        addBookToLibrary ('Don Quixote', 'Miguel de Cervantes', 'Yes');
-        addBookToLibrary ('One Hundred Years of Solitude', 'Gabriel Garcia Marquez', 'Yes');
+        myLibrary=[
+            {title: "The Hobbit", author: "J.R.R. Tolkien", readStatus: "No"},
+            {title: "Don Quixote", author: "Miguel de Cervantes", readStatus: "Yes"},
+            {title: "One Hundred Years of Solitude", author: "Gabriel Garcia Marquez", readStatus: "Yes"},
+        ];
         updateLocalStorage()
     }
 }
