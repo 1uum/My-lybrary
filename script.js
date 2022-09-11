@@ -107,11 +107,6 @@ document.querySelectorAll(".delete").forEach(i=>i.addEventListener('click', e =>
 
 //Listen for click of change status button, and changes the status reading.
 document.querySelectorAll(".status").forEach(i=>i.addEventListener('click', e => { 
-    /* if (myLibrary[e.currentTarget.value].readStatus == 'Yes') {
-        myLibrary[e.currentTarget.value].readStatus = 'No' ; 
-    } else{
-        myLibrary[e.currentTarget.value].readStatus = 'Yes'
-    } */
     (myLibrary[e.currentTarget.value].readStatus == 'Yes') ? myLibrary[e.currentTarget.value].readStatus = 'No' : myLibrary[e.currentTarget.value].readStatus = 'Yes'
     updateLocalStorage()
 }));
