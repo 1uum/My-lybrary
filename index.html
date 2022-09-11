@@ -9,10 +9,11 @@
         </style> 
     </head>
     <body>
-        <div class="header"> My Library</div>
+        <div class="header">My Library</div>
 
-        <div class="form-menu">
-            <form id="form">
+        <form id="form">
+            <fieldset>
+                <legend>New Book</legend>
                 <label for="bookName">Title:</label>
                 <input type="text" name="bookName" id="input-title">
                 <label for="authorName">Author:</label>
@@ -20,26 +21,26 @@
                 <label for="isRead">Have you read it?</label>
                 <input type="checkbox" id="input-check">
                 <button value="submit">Add Book</button>
-            </form>
-        </div>
+            </fieldset>
+        </form>
 
-        <div class="my-table">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Title</th>
-                        <th>Author</th>
-                        <th>Read Status</th>
-                        <th> </th>
-                        <th> </th>
-                    </tr>
-                </thead>
-                <tbody id="book-table">
-                    
-                </tbody>
-            </table>
-        </div>
-        <footer>Made by github.com/1uum/ for The Odin Project</footer>
+        <table>
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>Read Status</th>
+                    <th> </th>
+                </tr>
+            </thead>
+            <tbody id="book-table">
+                  
+            </tbody>
+        </table>
+
+        <footer>
+            <a href="https://github.com/1uum/" target="_blank"><img src="github-colored-seeklogo.com.svg" alt="" width="80" height="80"></a>
+        </footer>
 
         <script src="script.js"></script>
     </body>

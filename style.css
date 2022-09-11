@@ -1,4 +1,7 @@
-*{
+*   {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
     font-family: 'Roboto', 'sans-serif';
     font-weight: 100;
 }
@@ -10,8 +13,8 @@ html{
 }
 
 body{
-    margin: 0 10%;
-    margin-bottom: 50px;
+    margin-left: 30%;
+    margin-right: 30%;
 }
 
 .header{
@@ -19,16 +22,24 @@ body{
     font-size: 2em;
     font-weight: 500;
     align-items: center;
-    padding: 20px;
-    margin-bottom: 20px;
+    margin: 1em 0 1em 0;
+    text-align: left;
 }
 
-.form-menu{
-    display: flex;
-    padding: 0px 20px;
-    align-items: center;
-    margin-bottom: 60px;
-    min-width: 783px;
+legend{
+    font-size: 1em;
+    font-weight: 500;
+    padding: 5px 15px;
+    border: 1px solid #000;
+    background-color: rgb(181, 94, 94);
+}
+
+fieldset{
+    padding: 20px;
+    width: fit-content;
+    margin: auto;
+    background-color: #f6f6f6;
+    margin-bottom: 2em;
 }
 
 input{
@@ -39,31 +50,28 @@ label{
     font-weight: 500;
 }
 
-button{
+fieldset button{
     padding: 5px;
     max-height: 40px;
     min-width: 100px;
     font-weight: 500;
+    background-color: rgb(181, 94, 94);
 }
 
 button:hover, #input-check:hover{
     cursor: pointer;
 }
 
-.bttnDelete{
+.delete, .status{
+    cursor: pointer;
+    border: none;
+    background-color: #f6f6f3;
     padding: 5px;
-    min-width: 40px;
 }
 
-.bttnStatus{
-    padding: 3px;
-    font-weight: 100;
-    min-height: 30px;
-}
-
-.my-table{
-    display: flex;
-    justify-content: space-between;
+table{
+    width: fit-content;
+    margin: auto;
 }
 
 table, th, td{
@@ -81,16 +89,12 @@ th{
     min-width: 130px;
 }
 
+tr{
+    border-bottom: 1px solid black;
+}
+
 footer{
-    position: fixed;
+    position: absolute;
     bottom: 0;
     left: 0;
-    display: flex;
-    width: 100%;
-    height: 50px;
-    background-color: #eeeeee;
-    font-size: 15px;
-    justify-content: center;
-    align-items: center;
-    font-weight: 500;
 }
